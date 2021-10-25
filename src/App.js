@@ -36,6 +36,13 @@ function App() {
     if (programName[0] !== 'B'){
       errorHTML += '<li>Program name is invalid.</li>';
     }
+    if (errorHTML.length === 0){
+      localStorage.setItem('fullName', fullName);
+      localStorage.setItem('studentNumber', studentNumber);
+      localStorage.setItem('programName', programName);
+      localStorage.setItem('courseNames', JSON.stringify(courseNames));
+      localStorage.setItem('courseScores', JSON.stringify(courseScores));
+    }
     setErrorMessage(errorHTML);
     
     setTimeout(() => setErrorMessage(''), 4000);
