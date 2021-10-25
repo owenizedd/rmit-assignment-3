@@ -20,7 +20,7 @@ function App() {
   const [courseScores, setCourseScores] = useState([83,82,92,87,91,95,83,88]);
   
   const handleValidation = () => {
-    const names = fullName.split('');
+    const names = fullName.split(' ');
     const number = studentNumber;
     let errorHTML = '';
      
