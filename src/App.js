@@ -20,7 +20,7 @@ function App() {
   const [courseScores, setCourseScores] = useState([83,82,92,87,91,95,83,88]);
   
   const handleValidation = () => {
-    const names = fullName;
+    const names = fullName.split('');
     const number = studentNumber;
     let errorHTML = '';
      
@@ -37,6 +37,7 @@ function App() {
       errorHTML += '<li>Program name is invalid.</li>';
     }
     if (errorHTML.length === 0){
+      alert('Data saved to localStorage');
       localStorage.setItem('fullName', fullName);
       localStorage.setItem('studentNumber', studentNumber);
       localStorage.setItem('programName', programName);
