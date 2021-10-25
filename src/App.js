@@ -33,6 +33,9 @@ function App() {
     if (!(number.length === 7 && number[0] == '3')){
       errorHTML += '<li>Student Number is invalid.</li>';
     }
+    if (programName[0] !== 'B'){
+      errorHTML += '<li>Program name is invalid.</li>';
+    }
     setErrorMessage(errorHTML);
     
     setTimeout(() => setErrorMessage(''), 4000);
