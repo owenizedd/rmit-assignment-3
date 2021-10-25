@@ -21,6 +21,7 @@ function App() {
   
   const handleValidation = () => {
     const names = fullName;
+    const number = studentNumber;
     let errorHTML = '';
      
     if ( !(names.length === 2 
@@ -29,8 +30,12 @@ function App() {
       //add to error
       errorHTML += '<li>Fullname is invalid.</li>';
     }
-
+    if (!(number.length === 7 && number[0] == '3')){
+      errorHTML += '<li>Student Number is invalid.</li>';
+    }
     setErrorMessage(errorHTML);
+    
+    setTimeout(() => setErrorMessage(''), 4000);
   }
 
   const handleCourseNameChange = (e, index) => {
@@ -75,6 +80,8 @@ function App() {
           )
         })
       }
+
+      <input type="submit" value="Submit" onClick={handleValidation}  />
       
     </div>
   );
