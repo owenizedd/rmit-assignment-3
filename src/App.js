@@ -1,6 +1,7 @@
 import './App.css';
 import { useState } from 'react';
 function App() {
+  const [errorMessage, setErrorMessage] = useState('');
   const [fullName, setFullName] = useState('');
   const [studentNumber, setStudentNumber] = useState('');
   const [programName, setProgramName] = useState('');
@@ -18,6 +19,20 @@ function App() {
   ]);
   const [courseScores, setCourseScores] = useState([83,82,92,87,91,95,83,88]);
   
+  const handleValidation = () => {
+    const names = fullName;
+    let errorHTML = '';
+     
+    if ( !(names.length === 2 
+      && names[0][0].charCodeAt() < 97
+      && names[1][0].charCodeAt() < 97) ){
+      //add to error
+      errorHTML += '<li>Fullname is invalid.</li>';
+    }
+
+    setErrorMessage(errorHTML);
+  }
+
   const handleCourseNameChange = (e, index) => {
     const newArray = [...courseNames];
     newArray[index] = e.target.value;
@@ -30,6 +45,13 @@ function App() {
   }
   return (
     <div className="App">
+      {
+        errorMessage ?
+          <div className='toast' dangerouslySetInnerHTML={{__html: errorMessage}}></div>
+        :
+        []
+      }
+      <h3>Assignment 3</h3>
       <input 
         type="text" 
         placeholder="Full name"
